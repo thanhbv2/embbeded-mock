@@ -24,14 +24,7 @@ class Analysis extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener(
-      'message',
-      event => {
-        console.log('===============>', event);
-        console.log('===============>data', event.data);
-      },
-      false
-    );
+  
     const { dispatch } = this.props;
     this.reqRef = requestAnimationFrame(() => {
       dispatch({

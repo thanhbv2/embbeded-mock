@@ -46,6 +46,14 @@ const query = {
 
 class BasicLayout extends React.Component {
   componentDidMount() {
+    window.addEventListener(
+      'message',
+      event => {
+        console.log('===============>', event);
+        console.log('===============>data', event.data);
+      },
+      false
+    );
     const {
       dispatch,
       route: { routes, authority },
