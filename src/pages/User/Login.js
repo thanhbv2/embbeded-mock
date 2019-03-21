@@ -22,6 +22,13 @@ class LoginPage extends Component {
     this.setState({ type });
   };
 
+  componentDidMount = () => {
+    window.addEventListener('message', event => {
+      console.log('===============>', event);
+    })
+  }
+
+
   onGetCaptcha = () =>
     new Promise((resolve, reject) => {
       this.loginForm.validateFields(['mobile'], {}, (err, values) => {

@@ -14,9 +14,7 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      console.log('===============>', payload);
       const response = yield call(fakeAccountLogin, payload);
-      console.log('===============>', response);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
@@ -26,20 +24,20 @@ export default {
         reloadAuthorized();
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
-        let { redirect } = params;
-        if (redirect) {
-          const redirectUrlParams = new URL(redirect);
-          if (redirectUrlParams.origin === urlParams.origin) {
-            redirect = redirect.substr(urlParams.origin.length);
-            if (redirect.match(/^\/.*#/)) {
-              redirect = redirect.substr(redirect.indexOf('#') + 1);
-            }
-          } else {
-            window.location.href = redirect;
-            return;
-          }
-        }
-        yield put(routerRedux.replace(redirect || '/'));
+        // let { redirect } = params;
+        // if (redirect) {
+        //   const redirectUrlParams = new URL(redirect);
+        //   if (redirectUrlParams.origin === urlParams.origin) {
+        //     redirect = redirect.substr(urlParams.origin.length);
+        //     if (redirect.match(/^\/.*#/)) {
+        //       redirect = redirect.substr(redirect.indexOf('#') + 1);
+        //     }
+        //   } else {
+        //     window.location.href = redirect;
+        //     return;
+        //   }
+        // }
+        yield put(routerRedux.replace('/embedded'));
       }
     },
 
